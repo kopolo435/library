@@ -1,5 +1,6 @@
 let myLibrary = [];
 const booksContainer = document.querySelector(".booksContainer");
+const addBookBtn = document.querySelector("#addBook");
 
 function Book(title, autor, pageNum, wasRead) {
   this.title = title;
