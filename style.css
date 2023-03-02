@@ -7,6 +7,10 @@ body{
     height: 100vh;
 }
 
+main{
+    display: flex;
+}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -27,4 +31,8 @@ header{
     display: grid;
     gap: 5px;
     background-color: aqua;
+}
+
+.formContainer{
+    background-color: wheat;
 }
