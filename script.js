@@ -36,5 +36,9 @@ function DisplayBooks(bookArray) {
 }
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
+const bookwTwo = new Book("Inmenso", "Samir", 100, "yes");
+const bookThree = new Book("Maravilloso Planeta", "Andres Perez", 300, "yes");
 AddBookToLibrary(bookOne);
+AddBookToLibrary(bookwTwo);
+AddBookToLibrary(bookThree);
 DisplayBooks(myLibrary);
