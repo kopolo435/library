@@ -16,4 +16,5 @@ function AddBookToLibrary(book) {
 }
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
-console.log(bookOne.info());
+AddBookToLibrary(bookOne);
+console.log(myLibrary[0]);
