@@ -16,10 +16,20 @@ function AddBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function EditBookCardText(book, bookCard) {
+  book.values.forEach((info) => {
+    const text = document.createElement("p");
+    text.textContent = info;
+    bookCard.appendChild(text);
+  });
+  return bookCard;
+}
+
 function DisplayBooks(bookArray) {
   const books = bookArray;
   books.forEach((book) => {
     const bookCard = document.createElement("div");
+    bookCard.classList.add("bookCard");
     booksContainer.appendChild(bookCard);
   });
 }
