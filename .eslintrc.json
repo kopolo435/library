@@ -16,7 +16,7 @@
             "error",
             "double"
         ],
-        "prefer-const": ["warn", {
+        "prefer-const": ["off", {
             "destructuring": "any",
             "ignoreReadBeforeAssign": false
         }]
