@@ -14,7 +14,9 @@ body{
     gap: 10px;
 }
 
-.booksContainer div{
-    background-color: black;
-    height: 100px;
+.bookCard{
+    display: grid;
+    gap: 5px;
+    background-color: aqua;
+    height: 50px;
 }
