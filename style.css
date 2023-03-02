@@ -7,6 +7,14 @@ body{
     height: 100vh;
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    align-items: center;
+    padding: 10px 20px;
+}
+
 .booksContainer{
     display: grid;
     grid-template-columns: repeat(3,1fr);
