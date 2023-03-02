@@ -17,7 +17,7 @@ function AddBookToLibrary(book) {
 }
 
 function EditBookCardText(book, bookCard) {
-  book.values.forEach((info) => {
+  Object.values(book).forEach((info) => {
     const text = document.createElement("p");
     text.textContent = info;
     bookCard.appendChild(text);
@@ -28,8 +28,9 @@ function EditBookCardText(book, bookCard) {
 function DisplayBooks(bookArray) {
   const books = bookArray;
   books.forEach((book) => {
-    const bookCard = document.createElement("div");
+    let bookCard = document.createElement("div");
     bookCard.classList.add("bookCard");
+    bookCard = EditBookCardText(book, bookCard);
     booksContainer.appendChild(bookCard);
   });
 }
