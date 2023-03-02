@@ -1,6 +1,7 @@
 let myLibrary = [];
 const booksContainer = document.querySelector(".booksContainer");
 const addBookBtn = document.querySelector("#addBook");
+const formContainer = document.querySelector(".formContainer");
 
 function Book(title, autor, pageNum, wasRead) {
   this.title = title;
@@ -35,6 +36,10 @@ function DisplayBooks(bookArray) {
     booksContainer.appendChild(bookCard);
   });
 }
+
+addBookBtn.addEventListener("click",()=>{
+    formContainer.classList.add("showFormContainer");
+})
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
 const bookwTwo = new Book("Inmenso", "Samir", 100, "yes");
