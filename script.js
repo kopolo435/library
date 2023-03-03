@@ -3,7 +3,7 @@ const booksContainer = document.querySelector(".booksContainer");
 const addBookBtn = document.querySelector("#addBook");
 const formContainer = document.querySelector(".formContainer");
 const cancelBtn = document.querySelector("#cancelBtn");
-
+const saveBookBtn = document.querySelector("#saveBookBtn");
 function Book(title, autor, pageNum, wasRead) {
   this.title = title;
   this.autor = autor;
@@ -45,6 +45,10 @@ addBookBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click", () => {
   formContainer.classList.remove("showFormContainer");
 });
+
+saveBookBtn.addEventListener("click", Event =>{
+    Event.preventDefault();
+})
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
 const bookwTwo = new Book("Inmenso", "Samir", 100, "yes");
