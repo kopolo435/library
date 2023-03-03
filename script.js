@@ -73,7 +73,8 @@ cancelBtn.addEventListener("click", () => {
 
 saveBookBtn.addEventListener("click", (Event) => {
   Event.preventDefault();
-  console.log(GetInputsValues());
+  AddBookToLibrary(CreateBook(GetInputsValues()));
+  DisplayBooks(myLibrary);
 });
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
