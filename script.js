@@ -50,12 +50,13 @@ function GetInputsValues() {
     ) {
       return input.value;
     }
-    //Comprueba input type="radio"
+    // Comprueba input type="radio"
     if (input.checked) {
       return input.value;
     }
   });
-  return inputsValues;
+  // retorna un array sin el undefined
+  return inputsValues.filter((item) => item);
 }
 
 addBookBtn.addEventListener("click", () => {
