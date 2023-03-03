@@ -37,9 +37,15 @@ header{
 .formContainer{
     background-color: wheat;
     width: 200px;
+    padding: 20px;
     display: none;
 }
 
 .showFormContainer{
     display:block;
+}
+
+.formContainer form{
+    display: grid;
+    gap:10px;
 }
