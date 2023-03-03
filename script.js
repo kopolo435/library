@@ -59,6 +59,10 @@ function GetInputsValues() {
   return inputsValues.filter((item) => item);
 }
 
+function CreateBook(info) {
+  return new Book(info[0], info[1], info[2], info[3]);
+}
+
 addBookBtn.addEventListener("click", () => {
   formContainer.classList.add("showFormContainer");
 });
