@@ -32,23 +32,6 @@ function EditBookCardText(book, bookCard) {
   return bookCard;
 }
 
-function DisplayNewBook(book) {
-  let bookCard = document.createElement("div");
-  bookCard.classList.add("bookCard");
-  bookCard = EditBookCardText(book, bookCard);
-  bookCard.setAttribute("data-index", myLibrary.length - 1);
-  booksContainer.appendChild(bookCard);
-}
-
-function DisplayBooks(bookArray) {
-  const books = bookArray;
-  books.forEach((book) => {
-    let bookCard = document.createElement("div");
-    bookCard.classList.add("bookCard");
-    bookCard = EditBookCardText(book, bookCard);
-    booksContainer.appendChild(bookCard);
-  });
-}
 
 function GetInputsValues() {
   let inputsValues = Array.from(bookInputs).map((input) => {
@@ -69,6 +52,39 @@ function GetInputsValues() {
 
 function RemoveBook(index) {
   myLibrary.splice(index, 1);
+}
+
+function CreateRemoveBtn(){
+  let removeBtn = document.createElement("button");
+  removeBtn.textContent="Remove Book";
+  removeBtn.setAttribute("data-index", myLibrary.length - 1);
+  removeBtn.addEventListener("click", () =>{
+    RemoveBook(removeBtn.getAttribute("data-index"));
+    console.log(removeBtn);
+    booksContainer.removeChild(removeBtn.parentNode);
+  }) 
+  return removeBtn;
+}
+
+function DisplayNewBook(book) {
+  let bookCard = document.createElement("div");
+  bookCard.classList.add("bookCard");
+  bookCard = EditBookCardText(book, bookCard);
+  bookCard.setAttribute("data-index", myLibrary.length - 1);
+  let removeBtn = CreateRemoveBtn();
+  bookCard.appendChild(removeBtn);
+  booksContainer.appendChild(bookCard);
+}
+
+
+function DisplayBooks(bookArray) {
+  const books = bookArray;
+  books.forEach((book) => {
+    let bookCard = document.createElement("div");
+    bookCard.classList.add("bookCard");
+    bookCard = EditBookCardText(book, bookCard);
+    booksContainer.appendChild(bookCard);
+  });
 }
 
 function CreateBook(info) {
