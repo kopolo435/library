@@ -36,7 +36,7 @@ function DisplayNewBook(book) {
   let bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
   bookCard = EditBookCardText(book, bookCard);
-  bookCard.setAttribute("data-index",myLibrary.length-1)
+  bookCard.setAttribute("data-index", myLibrary.length - 1);
   booksContainer.appendChild(bookCard);
 }
 
@@ -65,6 +65,10 @@ function GetInputsValues() {
   });
   // retorna un array sin el undefined
   return inputsValues.filter((item) => item);
+}
+
+function RemoveBook(index) {
+  myLibrary.splice(index, 1);
 }
 
 function CreateBook(info) {
