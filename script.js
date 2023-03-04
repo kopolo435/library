@@ -72,13 +72,18 @@ function CreateRemoveBtn(){
 
 // }
 
-function DisplayNewBook(book) {
+function CreateBoodCard(book){
   let bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
   bookCard = EditBookCardText(book, bookCard);
   bookCard.setAttribute("data-index", myLibrary.length - 1);
   let removeBtn = CreateRemoveBtn();
   bookCard.appendChild(removeBtn);
+  return bookCard 
+}
+
+function DisplayNewBook(book) {
+  let bookCard = CreateBoodCard(book);
   booksContainer.appendChild(bookCard);
 }
 
