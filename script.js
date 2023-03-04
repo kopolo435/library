@@ -32,10 +32,11 @@ function EditBookCardText(book, bookCard) {
   return bookCard;
 }
 
-function DisplayNewBook(book){
+function DisplayNewBook(book) {
   let bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
   bookCard = EditBookCardText(book, bookCard);
+  bookCard.setAttribute("data-index",myLibrary.length-1)
   booksContainer.appendChild(bookCard);
 }
 
