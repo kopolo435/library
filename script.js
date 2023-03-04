@@ -32,6 +32,13 @@ function EditBookCardText(book, bookCard) {
   return bookCard;
 }
 
+function DisplayNewBook(book){
+  let bookCard = document.createElement("div");
+  bookCard.classList.add("bookCard");
+  bookCard = EditBookCardText(book, bookCard);
+  booksContainer.appendChild(bookCard);
+}
+
 function DisplayBooks(bookArray) {
   const books = bookArray;
   books.forEach((book) => {
@@ -73,8 +80,9 @@ cancelBtn.addEventListener("click", () => {
 
 saveBookBtn.addEventListener("click", (Event) => {
   Event.preventDefault();
-  AddBookToLibrary(CreateBook(GetInputsValues()));
-  DisplayBooks(myLibrary);
+  let newBook = CreateBook(GetInputsValues());
+  AddBookToLibrary(newBook);
+  DisplayNewBook(newBook);
 });
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
