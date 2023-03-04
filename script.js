@@ -66,6 +66,12 @@ function CreateRemoveBtn(){
   return removeBtn;
 }
 
+// function ChangeReadStatus(index,bookArray){
+//   let book=myLibrary[index];
+//   book.wasRead= book.wasRead === "Yes" ? "Not yet" : "Yes";
+
+// }
+
 function DisplayNewBook(book) {
   let bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
