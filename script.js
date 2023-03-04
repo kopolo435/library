@@ -65,16 +65,18 @@ function CreateRemoveBtn(){
   return removeBtn;
 }
 
-// function CreateWasReadBtn(){
-//   let wasReadBtn = document.createElement("button");
-//   wasReadBtn.textContent="Remove Book";
-//   wasReadBtn.setAttribute("data-index", myLibrary.length - 1);
-//   wasReadBtn.addEventListener("click", () =>{
-//     let editedBookCard= ChangeReadStatus(wasReadBtn.getAttribute("data-index"))
+function CreateWasReadBtn(){
+  let wasReadBtn = document.createElement("button");
+  wasReadBtn.textContent="Change Read Status";
+  wasReadBtn.setAttribute("data-index", myLibrary.length - 1);
+  wasReadBtn.addEventListener("click", () =>{
+    let editedBookCard= ChangeReadStatus(wasReadBtn.getAttribute("data-index"))
+    wasReadBtn.parentNode.insertAdjacentElement("afterend",editedBookCard);
+    booksContainer.removeChild(wasReadBtn.parentNode);
 
-//   }) 
-//   return wasReadBtn;
-// }
+  }) 
+  return wasReadBtn;
+}
 
 function ChangeReadStatus(index){
   let book=myLibrary[index];
@@ -91,6 +93,7 @@ function CreateBoodCard(book){
   bookCard.setAttribute("data-index", myLibrary.length - 1);
   let removeBtn = CreateRemoveBtn();
   bookCard.appendChild(removeBtn);
+  bookCard.appendChild(CreateWasReadBtn());
   return bookCard 
 }
 
