@@ -60,17 +60,29 @@ function CreateRemoveBtn(){
   removeBtn.setAttribute("data-index", myLibrary.length - 1);
   removeBtn.addEventListener("click", () =>{
     RemoveBook(removeBtn.getAttribute("data-index"));
-    console.log(removeBtn);
     booksContainer.removeChild(removeBtn.parentNode);
   }) 
   return removeBtn;
 }
 
-// function ChangeReadStatus(index,bookArray){
-//   let book=myLibrary[index];
-//   book.wasRead= book.wasRead === "Yes" ? "Not yet" : "Yes";
+// function CreateWasReadBtn(){
+//   let wasReadBtn = document.createElement("button");
+//   wasReadBtn.textContent="Remove Book";
+//   wasReadBtn.setAttribute("data-index", myLibrary.length - 1);
+//   wasReadBtn.addEventListener("click", () =>{
+//     let editedBookCard= ChangeReadStatus(wasReadBtn.getAttribute("data-index"))
 
+//   }) 
+//   return wasReadBtn;
 // }
+
+function ChangeReadStatus(index){
+  let book=myLibrary[index];
+  book.wasRead= book.wasRead === "Yes" ? "Not yet" : "Yes";
+  let editedBookCard = CreateBoodCard(book);
+  editedBookCard.setAttribute("data-index",index)
+  return editedBookCard
+}
 
 function CreateBoodCard(book){
   let bookCard = document.createElement("div");
