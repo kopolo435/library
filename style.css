@@ -58,6 +58,12 @@ header{
 
 footer{
     display: flex;
-    gap: 20px;
     background-color: gray;
+    padding: 10px 20px;
+}
+
+footer ul{
+    display: flex;
+    color: white;
+    gap: 10px;
 }
