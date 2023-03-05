@@ -51,6 +51,13 @@ header{
     align-items: center;
 }
 
+.bookCardBtn button{
+    padding: 5px 10px;
+    border: none;
+    box-shadow: 2px 2px 2px grey;
+    border-radius: 10px;
+}
+
 .formContainer{
     background-color: wheat;
     width: 200px;
