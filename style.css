@@ -57,12 +57,15 @@ header{
 }
 
 footer{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     background-color: gray;
     padding: 10px 20px;
 }
 
 footer ul{
+    grid-column: 3/4;
+    justify-self: end;
     display: flex;
     color: white;
     gap: 30px;
