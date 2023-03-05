@@ -38,8 +38,11 @@ header{
 .bookCard{
     display: grid;
     gap: 5px;
-    background-color: aqua;
+    background-color: white;
     height: 30vh;
+    padding: 15px;
+    border-radius: 5px;
+    border: 5px solid black
 }
 
 .bookCardBtn{
