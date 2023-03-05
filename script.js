@@ -72,8 +72,8 @@ function CreateWasReadBtn(index = myLibrary.length - 1) {
     let editedBookCard = ChangeReadStatus(
       wasReadBtn.getAttribute("data-index")
     );
-    wasReadBtn.parentNode.insertAdjacentElement("afterend", editedBookCard);
-    booksContainer.removeChild(wasReadBtn.parentNode);
+    wasReadBtn.parentNode.parentNode.insertAdjacentElement("afterend", editedBookCard);
+    booksContainer.removeChild(wasReadBtn.parentNode.parentNode);
   });
   return wasReadBtn;
 }
