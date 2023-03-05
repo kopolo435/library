@@ -55,3 +55,9 @@ header{
     display: grid;
     gap:10px;
 }
+
+footer{
+    display: flex;
+    gap: 20px;
+    background-color: gray;
+}
