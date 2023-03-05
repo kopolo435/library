@@ -88,12 +88,14 @@ function ChangeReadStatus(index) {
 
 function CreateBoodCard(book, index = myLibrary.length - 1) {
   let bookCard = document.createElement("div");
+  let btnContainer = document.createElement("div");
   bookCard.classList.add("bookCard");
+  btnContainer.classList.add("bookCardBtn");
   bookCard = EditBookCardText(book, bookCard);
   bookCard.setAttribute("data-index", index);
-  let removeBtn = CreateRemoveBtn(index);
-  bookCard.appendChild(removeBtn);
-  bookCard.appendChild(CreateWasReadBtn(index));
+  btnContainer.appendChild(CreateRemoveBtn(index));
+  btnContainer.appendChild(CreateWasReadBtn(index))
+  bookCard.appendChild(btnContainer);
   return bookCard;
 }
 
