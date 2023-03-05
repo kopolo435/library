@@ -65,5 +65,7 @@ footer{
 footer ul{
     display: flex;
     color: white;
-    gap: 10px;
+    gap: 30px;
+    list-style: none;
 }
+
