@@ -64,8 +64,15 @@ header{
     font-weight: 800;
 }
 
+.bookCardBtn button:nth-child(2){
+    background-color: #5eceb1;
+    color: white;
+    font-weight: 800;
+}
+
+
 .formContainer{
-    background-color: wheat;
+    background-color: #b3b7ef;
     width: 200px;
     padding: 20px;
     display: none;
