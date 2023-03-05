@@ -42,6 +42,12 @@ header{
     height: 30vh;
 }
 
+.bookCardBtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .formContainer{
     background-color: wheat;
     width: 200px;
