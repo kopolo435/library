@@ -15,6 +15,7 @@ main{
 
 .mainContainer{
     display: flex;
+    height: 100%;
 }
 
 header{
@@ -29,7 +30,7 @@ header{
     flex: 1;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    background-color: chocolate;
+    background: center url(img/libreria.jpg);
     gap: 10px;
     padding: 20px;
 }
