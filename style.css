@@ -19,11 +19,18 @@ main{
 }
 
 header{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25%;
     background-color: white;
     align-items: center;
     padding: 10px 20px;
+}
+
+.rightSideH{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
 }
 
 .booksContainer{
