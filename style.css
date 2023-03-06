@@ -39,6 +39,8 @@ header{
 
 .searchContainer{
     display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .searchContainer input{
@@ -46,6 +48,11 @@ header{
     border-radius: 10px;
     padding: 5px;
     border: 2px solid black;
+}
+
+.searchContainer img{
+    height: 30px;
+    width: auto;
 }
 
 .booksContainer{
