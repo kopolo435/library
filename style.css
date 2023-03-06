@@ -33,6 +33,18 @@ header{
     gap: 30px;
 }
 
+.rightSideH button{
+    justify-self: end;
+}
+
+.searchContainer{
+    display: flex;
+}
+
+.searchContainer input{
+    flex: 1;
+}
+
 .booksContainer{
     flex: 1;
     display: grid;
