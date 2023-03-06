@@ -35,6 +35,13 @@ header{
 
 .rightSideH button{
     justify-self: end;
+    padding: 10px 20px;
+    background-color: green;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px grey;
+    border: none;
+    color: white;
+    font-weight: 800;
 }
 
 .searchContainer{
