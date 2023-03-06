@@ -21,7 +21,7 @@ main{
 header{
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 25%;
+    justify-content: space-between;
     background-color: white;
     align-items: center;
     padding: 10px 20px;
@@ -90,6 +90,7 @@ header{
 .bookCardBtn button{
     padding: 10px 20px;
     border: none;
+    gap: 20px;
     box-shadow: 2px 2px 2px grey;
     border-radius: 10px;
 }
