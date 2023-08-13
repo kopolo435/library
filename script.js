@@ -8,16 +8,18 @@ const saveBookBtn = document.querySelector("#saveBookBtn");
 const bookForm = document.querySelector("form");
 const bookInputs = bookForm.querySelectorAll("input");
 
-function Book(title, autor, pageNum, wasRead) {
-  this.title = title;
-  this.autor = autor;
-  this.pageNum = pageNum;
-  this.wasRead = wasRead;
-}
+class Book{
+  constructor (title,author,numberOfPages,readStatus){
+    this.title = title;
+    this.author = author;
+    this.numberOfPages = numberOfPages;
+    this.readStatus = readStatus;
+  }
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.autor}, ${this.pageNum}, ${this.wasRead}`;
-};
+  info(){
+    return `${this.title} by ${this.autor}, ${this.pageNum}, ${this.wasRead}`;
+  }
+}
 
 function AddBookToLibrary(book) {
   myLibrary.push(book);
