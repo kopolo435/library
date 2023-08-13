@@ -19,7 +19,33 @@ class Book{
   info(){
     return `${this.title} by ${this.autor}, ${this.pageNum}, ${this.wasRead}`;
   }
+
+  set bookIndex(index){
+    this.index = index;
+  }
+
+  get bookIndex(){
+    return this.index;
+  }
 }
+
+const bookController = (()=>{
+  const bookCollection = [];
+
+  const addNewBook = (newBook)=>{
+    bookCollection.push(newBook)
+  }
+  
+  const deleteBook = (bookIndex)=>{
+    bookCollection.slice(bookIndex,1);
+  }
+
+  const updateReadStatus = (book) =>{
+    bookCollection.splice(book.index,1,book);
+  }
+
+  return {addNewBook,deleteBook,updateReadStatus,bookCollection};
+})();
 
 function AddBookToLibrary(book) {
   myLibrary.push(book);
