@@ -50,10 +50,13 @@ const bookController = (()=>{
 const bookCardCreator = (()=>{
   
   const addTextBookCard = (book,bookCard)=>{
-    Object.values(book).forEach((info) => {
-      const text = document.createElement("p");
-      text.textContent = info;
-      bookCard.appendChild(text);
+    const bookValues = Object.values(book);
+    bookValues.forEach((info,index,bookValues) => {
+      if(!(Object.is(bookValues.length -1,index))){
+        const text = document.createElement("p");
+        text.textContent = info;
+        bookCard.appendChild(text);
+      }
     });
   }
 
