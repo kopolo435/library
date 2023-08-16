@@ -47,9 +47,51 @@ const bookController = (()=>{
   return {addNewBook,deleteBook,updateReadStatus,bookCollection};
 })();
 
-function AddBookToLibrary(book) {
-  myLibrary.push(book);
-}
+const bookCardCreator = (()=>{
+  
+  const addTextBookCard = (book,bookCard)=>{
+    Object.values(book).forEach((info) => {
+      const text = document.createElement("p");
+      text.textContent = info;
+      bookCard.appendChild(text);
+    });
+  }
+
+  const createBookCard = (book)=>{
+    const bookCard = document.createElement("div")
+    let btnContainer = document.createElement("div");
+
+    bookCard.classList.add("bookCard");
+    btnContainer.classList.add("bookCardBtn");
+
+    addTextBookCard(book, bookCard);
+
+    bookCard.setAttribute("data-index", book.bookIndex);
+    //btnContainer.appendChild(CreateRemoveBtn(book.bookIndex));
+    //btnContainer.appendChild(CreateWasReadBtn(book.bookIndex))
+    //bookCard.appendChild(btnContainer);
+
+    return bookCard;
+  }
+
+  return{createBookCard};
+})();
+
+const displayController = (()=>{
+    const bookContainer = document.getElementById("booksContainer");
+
+    const displayBooks = ()=>{
+      let bookCardsArray = [];
+      const bookArray = bookController.bookCollection;
+      bookArray.forEach((book)=>{
+        bookCardsArray.push(bookCardCreator.createBookCard(book));
+      });
+      bookContainer.replaceChildren(...bookCardsArray); // Reemplaza los elementos actuales por los nuevos
+    }
+
+    return {displayBooks};
+
+})();
 
 function EditBookCardText(book, bookCard) {
   Object.values(book).forEach((info) => {
@@ -77,9 +119,7 @@ function GetInputsValues() {
   return inputsValues.filter((item) => item);
 }
 
-function RemoveBook(index) {
-  myLibrary.splice(index, 1);
-}
+
 
 function CreateRemoveBtn(index = myLibrary.length - 1) {
   let removeBtn = document.createElement("button");
@@ -127,21 +167,6 @@ function CreateBoodCard(book, index = myLibrary.length - 1) {
   return bookCard;
 }
 
-function DisplayNewBook(book) {
-  let bookCard = CreateBoodCard(book);
-  booksContainer.appendChild(bookCard);
-}
-
-function DisplayBooks(bookArray) {
-  const books = bookArray;
-  books.forEach((book) => {
-    let bookCard = document.createElement("div");
-    bookCard.classList.add("bookCard");
-    bookCard = EditBookCardText(book, bookCard);
-    booksContainer.appendChild(bookCard);
-  });
-}
-
 function CreateBook(info) {
   return new Book(info[0], info[1], info[2], info[3]);
 }
@@ -157,14 +182,17 @@ cancelBtn.addEventListener("click", () => {
 saveBookBtn.addEventListener("click", (Event) => {
   Event.preventDefault();
   let newBook = CreateBook(GetInputsValues());
-  AddBookToLibrary(newBook);
-  DisplayNewBook(newBook);
+/*   AddBookToLibrary(newBook);
+  DisplayNewBook(newBook); */
+  bookController.addNewBook(newBook);
+  displayController.displayBooks();
+
 });
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
 const bookwTwo = new Book("Inmenso", "Samir", 100, "yes");
 const bookThree = new Book("Maravilloso Planeta", "Andres Perez", 300, "yes");
-AddBookToLibrary(bookOne);
-AddBookToLibrary(bookwTwo);
-AddBookToLibrary(bookThree);
-DisplayBooks(myLibrary);
+bookController.addNewBook(bookOne);
+bookController.addNewBook(bookwTwo);
+bookController.addNewBook(bookThree);
+displayController.displayBooks();
