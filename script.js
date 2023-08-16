@@ -57,6 +57,15 @@ const bookCardCreator = (()=>{
     });
   }
 
+  const createRemoveBtn = ()=>{
+    const index = myLibrary.length > 0 ? myLibrary.length -1 : 0;
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove Book";
+    removeBtn.setAttribute("data-index", index);
+    removeBtn.addEventListener("click",bookController.deleteBook(index));
+    return removeBtn;
+  }
+
   const createBookCard = (book)=>{
     const bookCard = document.createElement("div")
     let btnContainer = document.createElement("div");
@@ -67,9 +76,9 @@ const bookCardCreator = (()=>{
     addTextBookCard(book, bookCard);
 
     bookCard.setAttribute("data-index", book.bookIndex);
-    //btnContainer.appendChild(CreateRemoveBtn(book.bookIndex));
+    btnContainer.appendChild(createRemoveBtn());
     //btnContainer.appendChild(CreateWasReadBtn(book.bookIndex))
-    //bookCard.appendChild(btnContainer);
+    bookCard.appendChild(btnContainer);
 
     return bookCard;
   }
@@ -121,16 +130,6 @@ function GetInputsValues() {
 
 
 
-function CreateRemoveBtn(index = myLibrary.length - 1) {
-  let removeBtn = document.createElement("button");
-  removeBtn.textContent = "Remove Book";
-  removeBtn.setAttribute("data-index", index);
-  removeBtn.addEventListener("click", () => {
-    RemoveBook(removeBtn.getAttribute("data-index"));
-    booksContainer.removeChild(removeBtn.parentNode);
-  });
-  return removeBtn;
-}
 
 function CreateWasReadBtn(index = myLibrary.length - 1) {
   let wasReadBtn = document.createElement("button");
@@ -154,18 +153,6 @@ function ChangeReadStatus(index) {
   return editedBookCard;
 }
 
-function CreateBoodCard(book, index = myLibrary.length - 1) {
-  let bookCard = document.createElement("div");
-  let btnContainer = document.createElement("div");
-  bookCard.classList.add("bookCard");
-  btnContainer.classList.add("bookCardBtn");
-  bookCard = EditBookCardText(book, bookCard);
-  bookCard.setAttribute("data-index", index);
-  btnContainer.appendChild(CreateRemoveBtn(index));
-  btnContainer.appendChild(CreateWasReadBtn(index))
-  bookCard.appendChild(btnContainer);
-  return bookCard;
-}
 
 function CreateBook(info) {
   return new Book(info[0], info[1], info[2], info[3]);
@@ -182,6 +169,7 @@ cancelBtn.addEventListener("click", () => {
 saveBookBtn.addEventListener("click", (Event) => {
   Event.preventDefault();
   let newBook = CreateBook(GetInputsValues());
+  newBook.bookIndex = bookController.bookCollection.length;
 /*   AddBookToLibrary(newBook);
   DisplayNewBook(newBook); */
   bookController.addNewBook(newBook);
