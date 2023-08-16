@@ -157,8 +157,6 @@ saveBookBtn.addEventListener("click", (Event) => {
   Event.preventDefault();
   let newBook = CreateBook(GetInputsValues());
   newBook.bookIndex = bookController.bookCollection.length;
-/*   AddBookToLibrary(newBook);
-  DisplayNewBook(newBook); */
   bookController.addNewBook(newBook);
   displayController.displayBooks();
 
