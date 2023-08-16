@@ -1,4 +1,3 @@
-let myLibrary = [];
 const addBookBtn = document.querySelector("#addBook");
 const formContainer = document.querySelector(".formContainer");
 const cancelBtn = document.querySelector("#cancelBtn");
@@ -36,11 +35,15 @@ const bookController = (()=>{
   }
   
   const deleteBook = (bookIndex)=>{
+    console.log(bookCollection)
     bookCollection.slice(bookIndex,1);
+    console.log(bookCollection)
   }
 
   const updateReadStatus = (book) =>{
+    console.log(bookCollection)
     bookCollection.splice(book.index,1,book);
+    console.log(bookCollection)
   }
 
   return {addNewBook,deleteBook,updateReadStatus,bookCollection};
@@ -59,17 +62,18 @@ const bookCardCreator = (()=>{
     });
   }
 
-  const createRemoveBtn = ()=>{
-    const index = myLibrary.length > 0 ? myLibrary.length -1 : 0;
+  const createRemoveBtn = (index)=>{
     let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove Book";
     removeBtn.setAttribute("data-index", index);
-    removeBtn.addEventListener("click",bookController.deleteBook(index));
+    removeBtn.addEventListener("click",()=>{
+      bookController.deleteBook(index);
+      displayController.displayBooks();
+    });
     return removeBtn;
   }
 
-  const CreateWasReadBtn = ()=>{
-    const index = myLibrary.length > 0 ? myLibrary.length -1 : 0;
+  const CreateWasReadBtn = (index)=>{
     let wasReadBtn = document.createElement("button");
     wasReadBtn.textContent = "Change Read Status";
     wasReadBtn.setAttribute("data-index", index);
@@ -92,8 +96,8 @@ const bookCardCreator = (()=>{
     addTextBookCard(book, bookCard);
 
     bookCard.setAttribute("data-index", book.bookIndex);
-    btnContainer.appendChild(createRemoveBtn());
-    btnContainer.appendChild(CreateWasReadBtn())
+    btnContainer.appendChild(createRemoveBtn(book.bookIndex));
+    btnContainer.appendChild(CreateWasReadBtn(book.bookIndex))
     bookCard.appendChild(btnContainer);
 
     return bookCard;
@@ -166,4 +170,7 @@ const bookThree = new Book("Maravilloso Planeta", "Andres Perez", 300, "yes");
 bookController.addNewBook(bookOne);
 bookController.addNewBook(bookwTwo);
 bookController.addNewBook(bookThree);
+bookOne.bookIndex = 0;
+bookwTwo.bookIndex = 1;
+bookThree.bookIndex = 2;
 displayController.displayBooks();
