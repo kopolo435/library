@@ -1,5 +1,4 @@
 let myLibrary = [];
-const booksContainer = document.querySelector(".booksContainer");
 const addBookBtn = document.querySelector("#addBook");
 const formContainer = document.querySelector(".formContainer");
 const cancelBtn = document.querySelector("#cancelBtn");
@@ -51,7 +50,7 @@ const bookCardCreator = (()=>{
   
   const addTextBookCard = (book,bookCard)=>{
     const bookValues = Object.values(book);
-    bookValues.forEach((info,index,bookValues) => {
+    bookValues.forEach((info,index) => {
       if(!(Object.is(bookValues.length -1,index))){
         const text = document.createElement("p");
         text.textContent = info;
@@ -69,6 +68,20 @@ const bookCardCreator = (()=>{
     return removeBtn;
   }
 
+  const CreateWasReadBtn = ()=>{
+    const index = myLibrary.length > 0 ? myLibrary.length -1 : 0;
+    let wasReadBtn = document.createElement("button");
+    wasReadBtn.textContent = "Change Read Status";
+    wasReadBtn.setAttribute("data-index", index);
+    wasReadBtn.addEventListener("click", () => {
+      let book = bookController.bookCollection[index];
+      book.readStatus = book.readStatus === "yes" ? "not yet" : "yes";
+      bookController.updateReadStatus(book)
+      displayController.displayBooks();
+    });
+    return wasReadBtn;
+  }
+
   const createBookCard = (book)=>{
     const bookCard = document.createElement("div")
     let btnContainer = document.createElement("div");
@@ -80,7 +93,7 @@ const bookCardCreator = (()=>{
 
     bookCard.setAttribute("data-index", book.bookIndex);
     btnContainer.appendChild(createRemoveBtn());
-    //btnContainer.appendChild(CreateWasReadBtn(book.bookIndex))
+    btnContainer.appendChild(CreateWasReadBtn())
     bookCard.appendChild(btnContainer);
 
     return bookCard;
@@ -105,14 +118,6 @@ const displayController = (()=>{
 
 })();
 
-function EditBookCardText(book, bookCard) {
-  Object.values(book).forEach((info) => {
-    const text = document.createElement("p");
-    text.textContent = info;
-    bookCard.appendChild(text);
-  });
-  return bookCard;
-}
 
 function GetInputsValues() {
   let inputsValues = Array.from(bookInputs).map((input) => {
@@ -129,31 +134,6 @@ function GetInputsValues() {
   });
   // retorna un array sin el undefined
   return inputsValues.filter((item) => item);
-}
-
-
-
-
-function CreateWasReadBtn(index = myLibrary.length - 1) {
-  let wasReadBtn = document.createElement("button");
-  wasReadBtn.textContent = "Change Read Status";
-  wasReadBtn.setAttribute("data-index", index);
-  wasReadBtn.addEventListener("click", () => {
-    let editedBookCard = ChangeReadStatus(
-      wasReadBtn.getAttribute("data-index")
-    );
-    wasReadBtn.parentNode.parentNode.insertAdjacentElement("afterend", editedBookCard);
-    booksContainer.removeChild(wasReadBtn.parentNode.parentNode);
-  });
-  return wasReadBtn;
-}
-
-function ChangeReadStatus(index) {
-  let book = myLibrary[index];
-  book.wasRead = book.wasRead === "Yes" ? "Not yet" : "Yes";
-  let editedBookCard = CreateBoodCard(book, index);
-  editedBookCard.setAttribute("data-index", index);
-  return editedBookCard;
 }
 
 
