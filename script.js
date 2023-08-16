@@ -35,15 +35,15 @@ const bookController = (()=>{
   }
   
   const deleteBook = (bookIndex)=>{
-    console.log(bookCollection)
-    bookCollection.slice(bookIndex,1);
-    console.log(bookCollection)
+    bookCollection.splice(bookIndex,1);
+
+    bookCollection.forEach((book,index)=>{
+      book.bookIndex = index;
+    })
   }
 
   const updateReadStatus = (book) =>{
-    console.log(bookCollection)
     bookCollection.splice(book.index,1,book);
-    console.log(bookCollection)
   }
 
   return {addNewBook,deleteBook,updateReadStatus,bookCollection};
