@@ -156,15 +156,11 @@ cancelBtn.addEventListener("click", () => {
 });
 
 bookForm.addEventListener("submit",event=>{
-  if(!validateValues()){
-    event.preventDefault();
-  }else{
-    let newBook = CreateBook(GetInputsValues());
-    newBook.bookIndex = bookController.bookCollection.length;
-    bookController.addNewBook(newBook);
-    displayController.displayBooks();
-    event.preventDefault();
-  }
+  let newBook = CreateBook(GetInputsValues());
+  newBook.bookIndex = bookController.bookCollection.length;
+  bookController.addNewBook(newBook);
+  displayController.displayBooks();
+  event.preventDefault();
 })
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
@@ -177,3 +173,4 @@ bookOne.bookIndex = 0;
 bookwTwo.bookIndex = 1;
 bookThree.bookIndex = 2;
 displayController.displayBooks();
+validateValues();
