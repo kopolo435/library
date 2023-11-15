@@ -1,3 +1,5 @@
+import validateValues from "./validation.js";
+
 const addBookBtn = document.querySelector("#addBook");
 const formContainer = document.querySelector(".formContainer");
 const cancelBtn = document.querySelector("#cancelBtn");
@@ -153,14 +155,17 @@ cancelBtn.addEventListener("click", () => {
   formContainer.classList.remove("showFormContainer");
 });
 
-saveBookBtn.addEventListener("click", (Event) => {
-  Event.preventDefault();
-  let newBook = CreateBook(GetInputsValues());
-  newBook.bookIndex = bookController.bookCollection.length;
-  bookController.addNewBook(newBook);
-  displayController.displayBooks();
-
-});
+bookForm.addEventListener("submit",event=>{
+  if(!validateValues()){
+    event.preventDefault();
+  }else{
+    let newBook = CreateBook(GetInputsValues());
+    newBook.bookIndex = bookController.bookCollection.length;
+    bookController.addNewBook(newBook);
+    displayController.displayBooks();
+    event.preventDefault();
+  }
+})
 
 const bookOne = new Book("Grandioso", "Samir", 295, "not read yet");
 const bookwTwo = new Book("Inmenso", "Samir", 100, "yes");
