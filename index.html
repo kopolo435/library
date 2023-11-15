@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer ></script>
+    <script src="script.js" type="module" defer ></script>
 </head>
 <body>
     <header>
@@ -24,15 +24,15 @@
         
             <div id="booksContainer"></div>
             <div class="formContainer">
-                <form action="">
-                    <label for="title">Book Title
-                        <input type="text" id="title" name="title">
+                <form action="" >
+                    <label for="title">Book Title (requerido)
+                        <input type="text" id="title" name="title" required>
                     </label>
-                    <label for="autor">Book Autor
-                        <input type="text" id="autor" name="autor">
+                    <label for="autor">Book Autor (requerido)
+                        <input type="text" id="autor" name="autor" required>
                     </label>
-                    <label for="pgNum">Book page number
-                        <input type="number" id="pgNum" name="pgNumber">
+                    <label for="pgNum">Book page number (requerido)
+                        <input type="number" id="pgNum" name="pgNumber" required>
                     </label>
                     <fieldset>
                         <legend>Have you read the Book</legend>
